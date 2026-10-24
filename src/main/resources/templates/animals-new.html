@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelter - Add animal</title>
+</head>
+<body>
+    <nav>
+        <a th:href="@{/}">Home</a> |
+        <a th:href="@{/animals}">All animals</a> |
+        <a th:href="@{/animals/new}">Add animal</a>
+    </nav>
+
+    <main>
+        <h1>Add a new animal</h1>
+        <form th:action="@{/animals}" th:object="${form}" method="post">
+            <p>
+                <label for="name">Name (required)</label><br>
+                <input id="name" type="text" th:field="*{name}" required>
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </p>
+            <p>
+                <label for="type">Type (required)</label><br>
+                <select id="type" th:field="*{type}" required>
+                    <option value="">Choose a type</option>
+                    <option value="CAT">Cat</option>
+                    <option value="DOG">Dog</option>
+                    <option value="OTHER">Other</option>
+                </select>
+                <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></span>
+            </p>
+            <p>
+                <label for="breed">Breed</label><br>
+                <input id="breed" type="text" th:field="*{breed}">
+            </p>
+            <p>
+                <label for="age">Age (years)</label><br>
+                <input id="age" type="number" th:field="*{age}" min="0">
+                <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+            </p>
+            <p>
+                <label for="description">Description</label><br>
+                <textarea id="description" th:field="*{description}" rows="3"></textarea>
+            </p>
+            <p>
+                <label for="imageUrl">Image filename or URL</label><br>
+                <input id="imageUrl" type="text" th:field="*{imageUrl}"
+                       placeholder="Luna.jpeg" aria-describedby="image-help">
+                <br><small id="image-help">Leave blank to use a default photo for the animal type.</small>
+            </p>
+            <button type="submit">Add animal</button>
+        </form>
+    </main>
+</body>
+</html>

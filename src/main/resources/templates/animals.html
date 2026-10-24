@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelter - All animals</title>
+</head>
+<body>
+    <nav>
+        <a th:href="@{/}">Home</a> |
+        <a th:href="@{/animals}">All animals</a> |
+        <a th:href="@{/animals/new}">Add animal</a>
+    </nav>
+
+    <main>
+        <h1>All animals</h1>
+        <p th:if="${#lists.isEmpty(animals)}">There are no animals yet.</p>
+        <ul>
+            <li th:each="animal : ${animals}">
+                <h2 th:text="${animal.name}"></h2>
+                <img th:src="${animal.imageUrl}" th:alt="${'Photo of ' + animal.name}"
+                     width="300" height="200" style="object-fit: cover;">
+                <p>Type: <span th:text="${animal.type}"></span></p>
+                <p>Breed: <span th:text="${animal.breed}"></span></p>
+                <p>Age (years): <span th:text="${animal.age}"></span></p>
+                <p>Description: <span th:text="${animal.description}"></span></p>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>
