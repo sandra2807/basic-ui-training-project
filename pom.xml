@@ -34,13 +34,11 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- Thymeleaf: added in Task A -->
-        <!--
+        <!-- Thymeleaf: renders the HTML pages -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        -->
 
         <!-- Springdoc OpenAPI: added in Task B -->
         <!--
